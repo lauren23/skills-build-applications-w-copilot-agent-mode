@@ -20,16 +20,39 @@ export default function Activities() {
   }, [endpoint]);
 
   return (
-    <div className="container mt-4">
-      <h2>Activities</h2>
-      <ul className="list-group">
-        {items.length === 0 && <li className="list-group-item">No activities found</li>}
-        {items.map((it, idx) => (
-          <li key={it.id || idx} className="list-group-item">
-            {it.name || JSON.stringify(it)}
-          </li>
-        ))}
-      </ul>
+    <div className="card">
+      <div className="card-body">
+        <h3 className="card-title">Activities</h3>
+        <div className="table-responsive">
+          <table className="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Type</th>
+                <th>Duration</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.length === 0 && (
+                <tr>
+                  <td colSpan="5">No activities found</td>
+                </tr>
+              )}
+              {items.map((it, idx) => (
+                <tr key={it.id || idx}>
+                  <td>{idx + 1}</td>
+                  <td>{it.user || it.username || '-'}</td>
+                  <td>{it.type || it.activity_type || '-'}</td>
+                  <td>{it.duration ?? it.time ?? '-'}</td>
+                  <td>{it.date || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

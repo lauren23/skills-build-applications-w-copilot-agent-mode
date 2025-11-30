@@ -20,16 +20,35 @@ export default function Leaderboard() {
   }, [endpoint]);
 
   return (
-    <div className="container mt-4">
-      <h2>Leaderboard</h2>
-      <ol className="list-group list-group-numbered">
-        {items.length === 0 && <li className="list-group-item">No leaderboard data</li>}
-        {items.map((it, idx) => (
-          <li key={it.id || idx} className="list-group-item">
-            {it.username || it.name || JSON.stringify(it)}
-          </li>
-        ))}
-      </ol>
+    <div className="card">
+      <div className="card-body">
+        <h3 className="card-title">Leaderboard</h3>
+        <div className="table-responsive">
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              {items.length === 0 && (
+                <tr>
+                  <td colSpan="3">No leaderboard data</td>
+                </tr>
+              )}
+              {items.map((it, idx) => (
+                <tr key={it.id || idx}>
+                  <td>{idx + 1}</td>
+                  <td>{it.user || it.username || it.name || '-'}</td>
+                  <td>{it.score ?? it.points ?? '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
