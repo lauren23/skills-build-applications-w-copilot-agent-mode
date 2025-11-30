@@ -19,6 +19,7 @@ from rest_framework import routers
 from .views import UserViewSet, TeamViewSet, ActivityViewSet, LeaderboardViewSet, WorkoutViewSet
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+import os
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -29,12 +30,21 @@ router.register(r'workouts', WorkoutViewSet)
 
 @api_view(['GET'])
 def api_root(request, format=None):
+    # Prefer Codespace-based absolute URLs when running in Codespaces
+    codespace = os.environ.get('CODESPACE_NAME')
+    if codespace:
+        # Use HTTPS for Codespaces preview URLs (they are TLS-terminated by GitHub)
+        base = f"https://{codespace}-8000.app.github.dev"
+    else:
+        # Fallback to request-built absolute URIs (use current host)
+        base = request.build_absolute_uri('/')[:-1]
+
     return Response({
-        'users': '/api/users/',
-        'teams': '/api/teams/',
-        'activities': '/api/activities/',
-        'leaderboard': '/api/leaderboard/',
-        'workouts': '/api/workouts/',
+        'users': f'{base}/api/users/',
+        'teams': f'{base}/api/teams/',
+        'activities': f'{base}/api/activities/',
+        'leaderboard': f'{base}/api/leaderboard/',
+        'workouts': f'{base}/api/workouts/',
     })
 
 urlpatterns = [
