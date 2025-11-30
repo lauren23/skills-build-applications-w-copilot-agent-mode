@@ -1,0 +1,34 @@
+:root{
+  --brand: #0d6efd;
+  --muted: #6c757d;
+}
+
+body{
+  background: #f8f9fa;
+}
+
+.app-container{
+  padding-top: 1rem;
+}
+
+.app-header{
+  background: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.card-custom{
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+}
+
+.table-responsive {
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.footer-note{
+  color: var(--muted);
+  font-size: 0.9rem;
+}
