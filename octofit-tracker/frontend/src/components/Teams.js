@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import API_BASE from '../config';
 
 export default function Teams() {
   const [items, setItems] = useState([]);
-  const endpoint = `${API_BASE}/teams/`;
+  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/teams/`;
 
   useEffect(() => {
     console.log('[Teams] fetching from', endpoint);

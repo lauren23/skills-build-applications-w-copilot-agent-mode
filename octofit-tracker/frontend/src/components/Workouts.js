@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import API_BASE from '../config';
 
 export default function Workouts() {
   const [items, setItems] = useState([]);
-  const endpoint = `${API_BASE}/workouts/`;
+  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/workouts/`;
 
   useEffect(() => {
     console.log('[Workouts] fetching from', endpoint);

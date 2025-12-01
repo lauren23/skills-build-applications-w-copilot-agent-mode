@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import API_BASE from '../config';
 
 export default function Leaderboard() {
   const [items, setItems] = useState([]);
-  const endpoint = `${API_BASE}/leaderboard/`;
+  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/leaderboard/`;
 
   useEffect(() => {
     console.log('[Leaderboard] fetching from', endpoint);

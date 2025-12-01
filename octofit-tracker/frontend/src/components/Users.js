@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import API_BASE from '../config';
 
 export default function Users() {
   const [items, setItems] = useState([]);
-  const endpoint = `${API_BASE}/users/`;
+  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/users/`;
 
   useEffect(() => {
     console.log('[Users] fetching from', endpoint);

@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import API_BASE from '../config';
-
+7
 export default function Activities() {
   const [items, setItems] = useState([]);
-  const endpoint = `${API_BASE}/activities/`;
+  const endpoint = `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev/api/activities/`;
 
   useEffect(() => {
     console.log('[Activities] fetching from', endpoint);
